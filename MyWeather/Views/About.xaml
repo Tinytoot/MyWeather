@@ -1,0 +1,76 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MyWeather.Views.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" d:DesignHeight="768" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="PageTitle" Text="{Binding LocalizedResources.AboutPageTitleText, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+        <Grid x:Name="ContentPanel" Margin="10,0,14,0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" MinHeight="225"/>
+                <RowDefinition Height="115*" />
+                <RowDefinition Height="187*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,67">
+                <TextBlock 
+                    Padding="20,0,0,0"
+                    Text="{Binding LocalizedResources.ApplicationTitleToLower, Source={StaticResource LocalizedStrings}}"
+                    HorizontalAlignment="Left"
+                    FontSize="{StaticResource PhoneFontSizeLarge}" 
+                    FontFamily="{StaticResource PhoneFontFamilySemiBold}" Width="185" Margin="0,0.05,0,9.95" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" >
+                    <TextBlock.RenderTransform>
+                        <CompositeTransform Rotation="0.261"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock 
+                    Text="1.0"
+                    VerticalAlignment="Center"
+                    FontSize="{StaticResource PhoneFontSizeNormal}" RenderTransformOrigin="0.615,-0.5" Margin="0,12" Width="30"/>
+            </StackPanel>
+
+            <TextBlock Padding="20" 
+                Text="{Binding LocalizedResources.ApplicationDesc, Source={StaticResource LocalizedStrings}}"
+                Margin="12.752,72.904,11.248,55.464" 
+                TextWrapping="Wrap" 
+                Foreground="{StaticResource PhoneSubtleBrush}" 
+                FontSize="{StaticResource PhoneFontSizeNormal}" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Grid.RowSpan="4" >
+                <TextBlock.RenderTransform>
+                    <CompositeTransform Rotation="0.369"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <StackPanel Grid.Row="5" Margin="12,0,12,50" VerticalAlignment="Bottom" Height="128">
+                <Image 
+                    Source="../Images/CompanyLogo.png" 
+                    Stretch="None" 
+                    HorizontalAlignment="Left" />
+                <TextBlock 
+                    Text="Copyright© 2012" 
+                    Margin="0,12,0,0" 
+                    FontSize="{StaticResource PhoneFontSizeNormal}"/>
+                <TextBlock 
+                    Text="Orange Crush" 
+                    FontSize="{StaticResource PhoneFontSizeNormal}" Height="32"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,52 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MyWeather.Views.SearchCityView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:MyWeather.Converters"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="550"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <local:StringVisibilityConverter x:Key="StringVisibilityConverter"/>
+        </Grid.Resources>
+
+        <TextBox x:Name="txtFindCity" Grid.Row="0" KeyDown="txtFindCity_KeyDown"/>
+        <Border Grid.Row="1">
+            <TextBlock Text="Advertising goes here!" TextAlignment="Center" />
+        </Border>
+        <Grid Grid.Row="2" DataContext="{Binding ListCities}">
+        <TextBlock x:Name="txtNoRecords" Text="City not found" Visibility="{Binding Count, Converter={StaticResource StringVisibilityConverter}}"/>
+        <ListBox HorizontalAlignment="Left" Margin="6,0,0,0" Name="CityList" VerticalAlignment="Top" Width="474" SelectionChanged="CityList_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel x:Name="stackPanelCityList" Orientation="Horizontal" >
+                        <TextBlock HorizontalAlignment="Left" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="40" Text="{Binding name}"/>
+                        <TextBlock Margin="0,0,10,0" FontSize="25" Text="," Foreground="LightBlue"/>
+                        <TextBlock Margin="0,0,10,0" FontSize="25" Text="{Binding state}" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                        <TextBlock Margin="0,0,10,0" FontSize="25" Text="," Foreground="LightBlue"/>
+                        <TextBlock Margin="0,0,10,0" FontSize="25" Text="{Binding country}" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+      </Grid>
+
+    </Grid>
+
+</phone:PhoneApplicationPage>
